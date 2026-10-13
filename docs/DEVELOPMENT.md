@@ -1,6 +1,6 @@
 # Разработка NIKA Desktop
 
-[← README](../README.md) · [Бенчмарки](BENCHMARKS.md)
+[← README](../README.ru.md) · [English](DEVELOPMENT.en.md) · **Русский** · [Бенчмарки](BENCHMARKS.md)
 
 ## Требования
 

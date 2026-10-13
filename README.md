@@ -1,56 +1,25 @@
-# NIKA Desktop
+# NIKA — Native AI Assistant for Mac with Local LLMs
 
-![NIKA Desktop — личный AI-помощник на Mac](docs/assets/nika-desktop-banner.png)
+**English** · [Русский](README.ru.md)
 
-<p align="center"><strong>Личный AI-помощник, который живёт на твоём Mac.</strong><br>Разговоры, документы, голос и дела. Локальные модели — даже без интернета.</p>
+![NIKA Desktop](docs/assets/nika-desktop-banner.png)
 
-<p align="center">
-  <a href="https://github.com/1nikitas/NIKA_desktop/stargazers"><img src="https://img.shields.io/github/stars/1nikitas/NIKA_desktop?style=flat&amp;color=6659d9" alt="Звёзды GitHub"></a>
-  <a href="https://github.com/1nikitas/NIKA_desktop/forks"><img src="https://img.shields.io/github/forks/1nikitas/NIKA_desktop?style=flat&amp;color=6659d9" alt="Форки GitHub"></a>
-  <img src="docs/assets/platform.svg" alt="macOS 26+ · Apple Silicon">
-  <img src="docs/assets/swift.svg" alt="SwiftUI · Swift 6">
-  <a href="docs/DEVELOPMENT.md#проверки"><img src="docs/assets/tests.svg" alt="Tests: 39 passed, 5 skipped"></a>
-</p>
+**Your AI assistant, running on your Mac.** Download a local model, chat offline, and work with your documents. Built with SwiftUI and llama.cpp — ready to explore, customize, and extend.
 
-<p align="center">
-  <a href="#быстрый-старт">Запустить</a> ·
-  <a href="#возможности">Возможности</a> ·
-  <a href="#бенчмарки">Бенчмарки</a> ·
-  <a href="docs/DEVELOPMENT.md">Разработка</a> ·
-  <a href="https://github.com/1nikitas/NIKA_desktop/issues">Обратная связь</a>
-</p>
+[![GitHub stars](https://img.shields.io/github/stars/1nikitas/NIKA_desktop?style=flat&color=6659d9)](https://github.com/1nikitas/NIKA_desktop/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/1nikitas/NIKA_desktop?style=flat&color=6659d9)](https://github.com/1nikitas/NIKA_desktop/forks)
+![macOS 26+ · Apple Silicon](docs/assets/platform.svg)
+![SwiftUI · Swift 6](docs/assets/swift.svg)
 
-![Разговор с NIKA в тёмной теме](docs/assets/conversation-dark.png)
+[Quick start](#quick-start) · [Local features](#what-runs-on-your-mac) · [Models](#local-models) · [Benchmarks](#benchmarks) · [Development](docs/DEVELOPMENT.en.md) · [Issues](https://github.com/1nikitas/NIKA_desktop/issues)
 
-<sub>Настоящие SwiftUI-экраны с демонстрационным разговором. Звёзды и форки обновляются автоматически через Shields.io.</sub>
+![NIKA's native macOS chat interface](docs/assets/conversation-dark.png)
 
-## Возможности
+<sub>Actual SwiftUI interface with a demonstration conversation. The app interface is currently in Russian.</sub>
 
-| | Что можно делать |
-| --- | --- |
-| **На твоём Mac** | Скачать GGUF, общаться без сети, работать с текстом и PDF. Изображения — с дополнением к модели. |
-| **С облаком NIKA** | Продолжать разговоры аккаунта, пользоваться агентами, инструментами и подключениями. Вход через Telegram. |
-| **Со своими помощниками** | Создавать ботсов с ролью, инструкциями и материалами; возвращаться в их разговоры. |
-| **Голосом** | Диктовать и слушать ответы. Живой облачный разговор использует WebRTC. |
-| **С повседневными делами** | Работать с календарём и напоминаниями; подтверждать предложенные локальные действия перед выполнением. |
-| **По-маковски** | Быстрый вызов, меню в строке состояния, несколько окон, горячие клавиши, светлая и тёмная темы. |
+## Quick start
 
-Локальный разговор не переключается в облако при ошибке. История и локальная память остаются на Mac; облачные возможности требуют аккаунта и интернета.
-
-<details>
-<summary><strong>Ещё скриншоты: светлая тема, ботсы, вход</strong></summary>
-
-![Светлая тема](docs/assets/conversation-light.png)
-
-| Свой помощник | Вход через Telegram |
-| --- | --- |
-| ![Настройка ботса, демонстрационные данные](docs/assets/bot-editor.png) | ![Вход через Telegram](docs/assets/telegram-login.png) |
-
-</details>
-
-## Быстрый старт
-
-**Нужно:** Apple Silicon, macOS 26+, Xcode 16.4+ со Swift 6, Python 3 и Homebrew.
+**Requires:** an Apple Silicon Mac, macOS 26+, Xcode 16.4+ with Swift 6, Python 3, and Homebrew.
 
 ```bash
 brew install llama.cpp
@@ -59,96 +28,113 @@ cd NIKA_desktop
 bash scripts/dev.sh
 ```
 
-Первый запуск скачает зависимость WebRTC и соберёт приложение. Модели загружаются отдельно через **Локальные модели → NIKA Smart → Начать разговор**. Для локального режима вход не нужен.
+Open **Локальные модели** (Local models), download **NIKA Smart**, then choose **Начать разговор** (Start conversation). **No account is required for local chat.** The first build downloads WebRTC; model downloads are separate. Once a model is installed, local chat works offline.
 
-Сейчас это сборка из исходников с локальной подписью; нотариализованного релиза пока нет. [Полная инструкция запуска и разработки →](docs/DEVELOPMENT.md)
+This is a source build with an ad-hoc signature. A notarized release is not currently provided. [Full setup and development guide →](docs/DEVELOPMENT.en.md)
 
-## Какую модель выбрать
+## What runs on your Mac
 
-| Модель | Параметры | Квантование | Размер файла |
+- **Local LLMs:** download a model or import a compatible GGUF and run it through llama.cpp.
+- **Document chat:** attach text documents and PDFs with extractable text. Image input requires a compatible vision projector.
+- **Local history and memory:** keep local conversations on your Mac. A local model error never silently sends the request to the cloud.
+- **Native macOS interface:** SwiftUI, multiple windows, a menu bar entry, keyboard shortcuts, and light and dark themes.
+- **Mac integrations:** calendar and reminders, with confirmation before proposed local actions execute.
+
+## Optional NIKA cloud
+
+Sign in through Telegram to access NIKA account conversations, cloud agents, tools, integrations, and custom assistants with their own instructions and materials. Live cloud voice uses WebRTC. These features require an account and an internet connection.
+
+**This repository contains the desktop client. The NIKA cloud backend is not included.** You can build and modify the local client without running that backend.
+
+<details>
+<summary><strong>More screenshots: light theme, custom assistants, sign-in</strong></summary>
+
+![Light theme](docs/assets/conversation-light.png)
+
+| Cloud assistant editor | Telegram sign-in |
+| --- | --- |
+| ![Assistant editor with demonstration data](docs/assets/bot-editor.png) | ![Telegram sign-in](docs/assets/telegram-login.png) |
+
+</details>
+
+## Local models
+
+| Model | Parameters | Quantization | File size |
 | --- | ---: | --- | ---: |
-| NIKA Mini (Qwen3.5-0.8B)¹ | 0,8 млрд | Q8_0 | 812 МБ |
-| NIKA Balance (Qwen3.5-2B) | 2 млрд | Q5_K_M | 1,44 ГБ |
-| **NIKA Smart (Qwen3.5-4B)** | **4 млрд** | **Q4_K_M** | **2,74 ГБ** |
-| NIKA Quality (Qwen3.5-4B) | 4 млрд | Q5_K_M | 3,14 ГБ |
-| Своя совместимая модель GGUF | Зависит от модели | На выбор | Зависит от модели и квантования |
+| NIKA Mini (Qwen3.5-0.8B)¹ | 0.8B | Q8_0 | 812 MB |
+| NIKA Balance (Qwen3.5-2B) | 2B | Q5_K_M | 1.44 GB |
+| **NIKA Smart (Qwen3.5-4B)** | **4B** | **Q4_K_M** | **2.74 GB** |
+| NIKA Quality (Qwen3.5-4B) | 4B | Q5_K_M | 3.14 GB |
+| Your own compatible GGUF | Model-dependent | Your choice | Depends on model and quantization |
 
-Можно установить свою совместимую локальную модель в формате GGUF — например,
-[Gemma 4 12B](https://huggingface.co/google/gemma-4-12B-it-qat-q4_0-gguf),
-[Qwen3.5-9B](https://huggingface.co/bartowski/Qwen_Qwen3.5-9B-GGUF) или
-[gpt-oss-20b](https://huggingface.co/ggml-org/gpt-oss-20b-GGUF).
-Для импортированных моделей нужны достаточная память и поддержка в установленной версии
-llama.cpp; эти варианты не проверялись в NIKA и не являются рекомендацией для Mac с 8 ГБ.
+Other GGUF options include [Gemma 4 12B](https://huggingface.co/google/gemma-4-12B-it-qat-q4_0-gguf), [Qwen3.5-9B](https://huggingface.co/bartowski/Qwen_Qwen3.5-9B-GGUF), and [gpt-oss-20b](https://huggingface.co/ggml-org/gpt-oss-20b-GGUF). These imports need enough memory and support in your installed llama.cpp version. They have not been tested in NIKA and are not recommendations for an 8 GB Mac.
 
-Для Mac с **8 ГБ** начни со **Smart** и контекста 4096. Для изображений нужен проектор
-ещё на 0,67 ГБ и контекст **2048**. Quality рекомендуем от 16 ГБ; Balance — экономный вариант.
-Запас для macOS учтён в оценке памяти, но испытания на физическом Mac с 8 ГБ пока не проведены.
+For an **8 GB Mac**, start with **Smart** and a 4096-token context; image input adds a 0.67 GB projector and needs a **2048-token context**. Quality targets 16 GB or more; Balance uses less memory. The memory estimate reserves room for macOS, but **physical 8 GB hardware has not yet been tested**.
 
-¹ Mini сохранена для прежних установок и разговоров; новым пользователям каталог предлагает Smart, Quality и Balance.
+¹ Mini is retained for existing installations and conversations. New installations offer Smart, Quality, and Balance.
 
-## Бенчмарки
+## Benchmarks
 
-### Скорость локального движка
+### Local engine speed
 
 <!-- LOCAL-BENCHMARK:START -->
-**Qwen3.5 4B Q4_K_M · Apple M4 Pro · 24 ГБ · Metal**
+**Qwen3.5 4B Q4_K_M · Apple M4 Pro · 24 GB · Metal**
 
-Замер 13 октября 2026, 5 повторов после прогрева, llama.cpp `7fe450e19`.
+Measured October 13, 2026, with five repetitions after warm-up, llama.cpp `7fe450e19`.
 
-| Нагрузка | Средняя скорость | Стандартное отклонение |
+| Workload | Mean throughput | Standard deviation |
 | --- | ---: | ---: |
-| Обработка промпта · pp512 | **611,60 токена/с** | ±0,72 |
-| Генерация · tg128 | **57,50 токена/с** | ±0,46 |
+| Prompt processing · pp512 | **611.60 tokens/s** | ±0.72 |
+| Token generation · tg128 | **57.50 tokens/s** | ±0.46 |
 
-Результат относится к этому M4 Pro с 24 ГБ. Скорость на Mac с 8 ГБ пока не измерена.
+These results describe this 24 GB M4 Pro. Speed on an 8 GB Mac has not been measured.
 <!-- LOCAL-BENCHMARK:END -->
 
-Это пропускная способность llama.cpp с синтетическими токенами, а не время ответа интерфейса, первый токен или качество диалога. [Методика, сырые данные и повторение замера →](docs/BENCHMARKS.md)
+This measures llama.cpp throughput with synthetic tokens, not app response latency, time to first token, or answer quality. [Raw results](docs/benchmarks/m4-pro-24gb-qwen35-4b-q4/raw.json) · [Environment](docs/benchmarks/m4-pro-24gb-qwen35-4b-q4/environment.json) · [Method and reproduction instructions (Russian)](docs/BENCHMARKS.md).
 
-### Качество базовой модели
+### Base model quality
 
-| Бенчмарк | Qwen3.5 4B |
+| Benchmark | Qwen3.5 4B |
 | --- | ---: |
-| MMLU-Pro | 79,1 |
-| GPQA Diamond | 76,2 |
-| IFEval | 89,8 |
+| MMLU-Pro | 79.1 |
+| GPQA Diamond | 76.2 |
+| IFEval | 89.8 |
 
-Результаты из [официальной карточки Qwen](https://huggingface.co/Qwen/Qwen3.5-4B#benchmark-results). Это опубликованные оценки исходной модели, **не замеры NIKA или Q4_K_M**. Квантование, контекст и режим генерации могут менять результат.
+Published results from the [official Qwen model card](https://huggingface.co/Qwen/Qwen3.5-4B#benchmark-results), **not NIKA or Q4_K_M evaluations**. Quantization, context, and generation settings can change results.
 
-## Сделано для клавиатуры
+## Keyboard shortcuts
 
-| Действие | Сочетание |
+| Action | Shortcut |
 | --- | --- |
-| Новый разговор / новое окно | `⌘N` / `⌘⇧N` |
-| Отправить / остановить | `⌘↩` / `⌘.` |
-| Модели / голос | `⌘⇧M` / `⌘⇧V` |
-| Быстрый вызов | `⌃⌥Space` |
-| Настройки | `⌘,` |
+| New conversation / new window | `⌘N` / `⌘⇧N` |
+| Send / stop | `⌘↩` / `⌘.` |
+| Models / voice | `⌘⇧M` / `⌘⇧V` |
+| Quick access | `⌃⌥Space` |
+| Settings | `⌘,` |
 
-## Разработка и участие
+## Build on NIKA
 
-Открой `Package.swift` в Xcode. Проект самостоятельный: соседний iPhone-репозиторий не нужен. Код интерфейса — SwiftUI, локальный движок — llama.cpp, живая облачная речь — WebRTC.
+Open `Package.swift` in Xcode. The repository is self-contained: you do not need the iPhone repository. The interface uses SwiftUI, local inference uses llama.cpp, and live cloud voice uses WebRTC.
 
-- [Запуск, разработка и тесты](docs/DEVELOPMENT.md)
-- [Бенчмарки и условия измерений](docs/BENCHMARKS.md)
-- [Сообщить об ошибке](https://github.com/1nikitas/NIKA_desktop/issues/new) — приложи шаги, версию macOS и модель Mac
-- [Предложить изменение](https://github.com/1nikitas/NIKA_desktop/pulls) — небольшой PR с описанием поведения и проверки
+- [Setup, architecture, and tests](docs/DEVELOPMENT.en.md)
+- [Report a bug](https://github.com/1nikitas/NIKA_desktop/issues/new): include reproduction steps, your macOS version, and Mac model.
+- [Propose a change](https://github.com/1nikitas/NIKA_desktop/pulls): keep the PR focused and explain the behavior and how you tested it.
 
-Если проект полезен — поставь звезду или создай форк на [GitHub](https://github.com/1nikitas/NIKA_desktop).
+If NIKA is useful to you, star the repository to follow it or fork it to experiment with your own assistant.
 
-<sub>Спасибо командам [Qwen](https://huggingface.co/Qwen), [llama.cpp](https://github.com/ggml-org/llama.cpp) и [WebRTC для macOS](https://github.com/stasel/WebRTC).</sub>
+Thanks to [Qwen](https://huggingface.co/Qwen), [llama.cpp](https://github.com/ggml-org/llama.cpp), and [WebRTC for macOS](https://github.com/stasel/WebRTC).
 
 <details open>
-<summary><strong>Не хочется возиться с установкой? Ника уже работает в вебе</strong></summary>
+<summary><strong>Prefer to skip installation? NIKA is already available on the web</strong></summary>
 
-Если вам нужен готовый помощник, откройте [веб-версию Ники](https://nika-agent.ru/). Авторизация по одной кнопке, без установки приложения и скачивания моделей. Здесь работает полноценная версия с мощными облачными LLM: модели, среда выполнения агентов (harness) и доступные инструменты уже соединены между собой.
+Open [NIKA on the web](https://nika-agent.ru/) for a ready-to-use assistant. Sign in without installing the desktop app or downloading models. The hosted service connects cloud LLMs, the agent runtime, and tools.
 
-Можно пользоваться Никой и в [Telegram-боте](https://t.me/nika_ai_2_bot).
+NIKA is also available through its [Telegram bot](https://t.me/nika_ai_2_bot).
 
-На скриншоте ниже — веб-интерфейс Ники. Здесь можно поручать задачи личным универсальным ботсам: начать с обычного сообщения, а затем настроить имя, облик и инструкции под себя.
+The screenshot below shows the web interface. Start by messaging a personal assistant, then customize its name, appearance, and instructions.
 
-![Веб-версия Ники: главный экран, личные ботсы, персонализация и примеры задач](docs/assets/nika-web-overview.jpg)
+![NIKA web: home screen, personal assistants, customization, and example tasks](docs/assets/nika-web-overview.jpg)
 
-Десктоп выбирайте, если хотите локальный инференс, доступ к исходному коду и возможность экспериментировать. Веб-версию выбирайте, если хотите начать с готового сервиса.
+Choose the desktop client for local inference, source code access, and experimentation. Choose the web version to start with a hosted service.
 
 </details>
