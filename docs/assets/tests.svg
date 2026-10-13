@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="221" height="24" role="img" aria-label="tests: 39 passed | 5 skipped">
+<title>tests: 39 passed | 5 skipped</title><clipPath id="r"><rect width="221" height="24" rx="5"/></clipPath>
+<g clip-path="url(#r)"><path fill="#252735" d="M0 0h56v24H0z"/><path fill="#367957" d="M56 0h165v24H56z"/></g>
+<g fill="white" text-anchor="middle" font-family="Verdana,Arial,sans-serif" font-size="11">
+<text x="28.0" y="16">tests</text><text x="138.5" y="16">39 passed | 5 skipped</text></g></svg>
